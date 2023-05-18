@@ -22,11 +22,11 @@ def postvendor():
         return {"error":"Service Photo is required"}
     if(photo.filename== ''):
         return {"error":"Service Photo is required"}
-    try:
-        vendorRepository.create(result, photo)
-        return {"success":"created service successfully"}
-    except:
-        return {"error":"unknown error "}
+    # try:
+    vendorRepository.create(result, photo)
+    return {"success":"created service successfully"}
+    # except:
+        # return {"error":"unknown error "}
 
 @vendor_bp.get('')
 def getVendors():
