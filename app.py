@@ -17,7 +17,8 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-access-token,x-reset-token')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Hazm1102001@localhost:5432/Quantum'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Hazm1102001@localhost:5432/Quantum'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://quantum_mg7q_user:5Z6T3K3TNbNrSi9UbgbllyU0O1hfxIA5@dpg-chj1kqe4dad01aii9t6g-a.frankfurt-postgres.render.com/quantum_mg7q'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 app.secret_key = 'secret string'
 db.init_app(app)
