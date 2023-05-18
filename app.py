@@ -2,6 +2,8 @@ from flask import Flask
 from flask_cors import CORS
 from flask_restful import Api
 from routes.TestRoutes import test_bp
+from routes.ServiceRoutes import service_bp
+from routes.VendorRoutes import vendor_bp
 from models.db import db
 from models.vendor.VendorModel import Vendor
 from models.service.ServiceModel import Service
@@ -22,6 +24,8 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 app.register_blueprint(test_bp, url_prefix='/test')
+app.register_blueprint(service_bp, url_prefix='/service')
+app.register_blueprint(vendor_bp, url_prefix='/vendor')
 
 if __name__ == "__main__":
     app.run(debug=True)

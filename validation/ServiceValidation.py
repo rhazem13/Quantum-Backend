@@ -4,7 +4,7 @@ from marshmallow import Schema, fields
 
 class CreateServiceScheme(Schema):
     class Meta:
-        fields = ("name","description","type")
+        fields = ("name","description","photo","type")
     name = fields.Str(required=True, validate=Length(max=80)) 
     description = fields.Str(required=True)
     type = fields.Bool(required=True)

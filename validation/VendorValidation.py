@@ -4,7 +4,7 @@ from marshmallow import Schema, fields
 
 class CreateVendorScheme(Schema):
     class Meta:
-        fields = ("name","description","websiteurl")
+        fields = ("name","description","photo","websiteurl")
     name = fields.Str(required=True, validate=Length(max=80)) 
     description = fields.Str(required=True)
     websiteurl = fields.Str(required=True, validate=Length(max=255)) 
