@@ -9,24 +9,28 @@ servicescheme= GetServiceScheme(many=True)
 
 @service_bp.post('')
 def postservice():
-    result = request.form
-    errors = createServicecasescheme.validate(result)
-    if errors:
-        if(type(errors)==str):
-            return {"error":errors}
-        key = next(iter(errors))
-        return {"error":key+' '+errors[key][0]} 
     try:
+        result = request.form
+        errors = createServicecasescheme.validate(result)
+        if errors:
+            if isinstance(errors, str):
+                return {"error": errors}
+            key = next(iter(errors))
+            return {"error": f"{key} {errors[key][0]}"}
+        
+        if 'photo' not in request.files:
+            return {"error": "Service Photo is required"}
+        
         photo = request.files['photo']
-    except:
-        return {"error":"Service Photo is required"}
-    if(photo.filename== ''):
-        return {"error":"Service Photo is required"}
-    # try:
-    serviceRepository.create(result, photo)
-    return {"success":"created service successfully"}
-    # except:
-        # return {"error":"unknown error "}
+        if photo.filename == '':
+            return {"error": "Service Photo is required"}
+        
+        serviceRepository.create(result, photo)
+        return {"success": "Created service successfully"}
+    
+    except Exception as e:
+        return {"error": str(e)}
+
 
 @service_bp.get('')
 def getServices():
