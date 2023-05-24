@@ -39,6 +39,20 @@ def getServices():
         "services": servicescheme.dump(services)
     }
 
+@service_bp.get('it')
+def getServicesit():
+    services = serviceRepository.get_it()
+    return {
+        "services": servicescheme.dump(services)
+    }
+
+@service_bp.get('security')
+def getServicessecurity():
+    services = serviceRepository.get_security()
+    return {
+        "services": servicescheme.dump(services)
+    }
+
 @service_bp.delete('remove_service/<int:id>')
 def remove_service(id):
     try :

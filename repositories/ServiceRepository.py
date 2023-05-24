@@ -7,7 +7,11 @@ photoService=PhotoService.getInstance()
 class ServiceRepository:
     def get_all(self):
         return Service.query.all()
+    def get_it(self):
+        return Service.query.filter(Service.type==True).all()
 
+    def get_security(self):
+        return Service.query.filter(Service.type==False).all()
     def create(self, result, photo):
         photopath = photoService.addPhoto(photo, 'services')
         new_value = Service(**result)
