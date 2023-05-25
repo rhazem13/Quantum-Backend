@@ -6,7 +6,7 @@ class CreateServiceScheme(Schema):
     class Meta:
         fields = ("name","description","photo","type")
     name = fields.Str(required=True, validate=Length(max=80)) 
-    description = fields.Str(required=True)
+    description = fields.Str(required=True, allow_none=True, validate=lambda x: len(x) <= 65535)
     type = fields.Bool(required=True)
 
 class GetServiceScheme(Schema):

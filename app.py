@@ -7,6 +7,7 @@ from routes.VendorRoutes import vendor_bp
 from models.db import db
 from models.vendor.VendorModel import Vendor
 from models.service.ServiceModel import Service
+from sqlalchemy import text
 
 app = Flask(__name__)
 CORS(app)
@@ -23,6 +24,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 app.secret_key = 'secret string'
 db.init_app(app)
 with app.app_context():
+    # query = text("ALTER TABLE services ALTER COLUMN description TYPE text")
+    # db.engine.connect().execute(query)
     db.create_all()
 app.register_blueprint(test_bp, url_prefix='/test')
 app.register_blueprint(service_bp, url_prefix='/service')
