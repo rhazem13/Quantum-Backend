@@ -4,10 +4,12 @@ from flask_restful import Api
 from routes.TestRoutes import test_bp
 from routes.ServiceRoutes import service_bp
 from routes.VendorRoutes import vendor_bp
+from routes.auth import auth_bp
 from models.db import db
 from models.vendor.VendorModel import Vendor
 from models.service.ServiceModel import Service
 from sqlalchemy import text
+import jwt
 
 app = Flask(__name__)
 CORS(app)
@@ -30,6 +32,7 @@ with app.app_context():
 app.register_blueprint(test_bp, url_prefix='/test')
 app.register_blueprint(service_bp, url_prefix='/service')
 app.register_blueprint(vendor_bp, url_prefix='/vendor')
+app.register_blueprint(auth_bp, url_prefix='/auth')
 
 if __name__ == "__main__":
     app.run(debug=True)
