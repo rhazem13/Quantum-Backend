@@ -9,7 +9,7 @@ from models.db import db
 from models.vendor.VendorModel import Vendor
 from models.service.ServiceModel import Service
 from sqlalchemy import text
-import jwt
+# import jwt
 
 app = Flask(__name__)
 CORS(app)
