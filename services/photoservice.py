@@ -3,8 +3,8 @@ import cloudinary.uploader
 
 class PhotoService:
     photoService = None
-    cloudinary.config(cloud_name = 'dvih3jm9h', api_key='171679492388358', 
-    api_secret='kHKESxLIwAURv2ZZA-2r5gH8MeA')
+    cloudinary.config(cloud_name = 'dnjijt3gv', api_key='722988112696177', 
+    api_secret='RNP1NIAsoBvmZVlA8D62aIQmE0w')
     @staticmethod
     def getInstance():
         if not PhotoService.photoService:
